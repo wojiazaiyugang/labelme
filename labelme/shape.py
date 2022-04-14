@@ -179,14 +179,14 @@ class Shape(object):
                     line_path.lineTo(self.points[0])
 
             if self.label and self.show_labels:
-                painter.setFont(QtGui.QFont("Arial", 25))
+                painter.setFont(QtGui.QFont("Arial", 12))
                 label_x, label_y = self.points[0].x(), self.points[0].y()
                 for p in self.points:
                     if p.x() < label_x:
                         label_x = p.x()
                         label_y = p.y()
-                shift_y = 20 * (2 if len(self.label) > 2 else 1)
-                painter.drawText(label_x - 15, label_y - shift_y, self.label)
+                shift_y = 10 * (2 if len(self.label) > 2 else 1)
+                painter.drawText(label_x - 15, label_y - shift_y, f"{self.label}({self.group_id})")
 
             painter.drawPath(line_path)
             painter.drawPath(vrtx_path)
